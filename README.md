@@ -30,6 +30,7 @@ In this mode, you MAY (but are not required to) provide any of the following env
 
 *MFA_SERIAL_NUMBER* - ARN of the MFA device with which you will authenticate
 
+*MFA_TOKEN* - a valid token from your MFA device
 
 The script will prompt you for any of the values above if they are not present in the environment
 
