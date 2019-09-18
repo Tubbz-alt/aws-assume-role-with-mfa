@@ -31,8 +31,8 @@ else
 fi
 
 
-username=$(aws iam get-user | jq -r '.User .UserName')
-mfa_arn=$(aws iam list-mfa-devices --user-name $username | jq -r '.MFADevices[0] .SerialNumber')
+username=$(aws iam get-user --output json | jq -r '.User .UserName')
+mfa_arn=$(aws iam list-mfa-devices --user-name $username --output json | jq -r '.MFADevices[0] .SerialNumber')
 
 function set_env_vars_from_json {
   json=$1
@@ -92,7 +92,7 @@ role_json=$(aws sts assume-role --role-arn ${ROLE_ARN} \
                     --serial-number ${MFA_SERIAL_NUMBER} \
                     --token-code ${TOKEN_CODE})
 set_env_vars_from_json "$role_json"
-identity=$(aws sts get-caller-identity | jq -r '.Arn')
+identity=$(aws sts get-caller-identity --output json | jq -r '.Arn')
 echo "====================================================================="
 echo "You are now entering a subshell as ${identity}"
 echo "type 'exit' to exit this subshell and return to your previous AWS identity"
