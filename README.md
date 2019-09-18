@@ -25,8 +25,11 @@ aws-assume-role-with-mfa.sh
 In this mode, you MAY (but are not required to) provide any of the following environment variables:
 
 *ROLE_ARN* - the ARN of the role you want to assume
+
 *ROLE_SESSION_NAME* - some arbitrary unique name for the session
+
 *MFA_SERIAL_NUMBER* - ARN of the MFA device with which you will authenticate
+
 
 The script will prompt you for any of the values above if they are not present in the environment
 
