@@ -2,6 +2,12 @@
 Wrapper script to simplify the process of assuming an AWS IAM role with MFA on the command line.
 Requires `bash`
 
+# Prerequisites
+The script uses the command line tool [jq](https://stedolan.github.io/jq/). On a Mac you can simply:
+```bash
+brew install jq
+```
+
 # Usage
 
 There are two ways to use this script, either by pointing to an AWS profile in your config file, or as a series of interactive prompts.
@@ -12,7 +18,7 @@ In either case, you must have valid credentials (in your environment or AWS prof
 
 Assumptions:
 1. You have a named AWS profile in your config / credentials file
-2. That profile defines role_arn, role_session_name, and either mfa_arn or a source_profile referring to another profile which defines mfa_arn
+2. That profile defines `role_arn`, `role_session_name`, and either `mfa_arn` or a source_profile referring to another profile which defines `mfa_arn`
 
 ```bash
 PROFILE=(profile name) aws-assume-role-with-mfa.sh
